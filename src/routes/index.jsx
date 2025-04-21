@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from '../pages/Home';
-import NotFound from '../pages/NotFound';
+import { Home, NotFound } from '../pages';
 
 export default function AppRoutes() {
     return (

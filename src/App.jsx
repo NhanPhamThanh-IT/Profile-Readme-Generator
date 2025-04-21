@@ -1,7 +1,7 @@
 import { CssBaseline, Box } from "@mui/material";
-import { ColorModeProvider } from "./context/ThemeContext";
+import { ColorModeProvider } from "./context";
 import { BrowserRouter } from "react-router-dom";
-import NavBar from "./components/NavBar";
+import { NavBar } from "./components";
 import AppRoutes from "./routes";
 
 function App() {
