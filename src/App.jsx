@@ -1,19 +1,20 @@
-import { CssBaseline, Box } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeProvider } from "./context";
 import { BrowserRouter } from "react-router-dom";
 import { NavBar } from "./components";
 import AppRoutes from "./routes";
+import theme from "./theme";
 
 function App() {
   return (
     <ColorModeProvider>
-      <CssBaseline />
-      <BrowserRouter>
-        <NavBar />
-        <Box p={2}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <BrowserRouter>
+          <NavBar />
           <AppRoutes />
-        </Box>
-      </BrowserRouter>
+        </BrowserRouter>
+      </ThemeProvider>
     </ColorModeProvider>
   );
 }
