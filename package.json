@@ -14,9 +14,11 @@
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^7.0.2",
     "lucide-react": "^0.503.0",
+    "marked": "^15.0.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.5.1"
+    "react-router-dom": "^7.5.1",
+    "react-syntax-highlighter": "^15.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
