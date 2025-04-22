@@ -1,12 +1,13 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
+import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import AppRouter from './routes'
 
 function App() {
   return (
-    <Box p={5}>
-      <Heading>Pham Thanh Nhan</Heading>
-      <Text mt={3}>Xin chao, toi la sinh vien nganh cong nghe thong tin</Text>
-    </Box>
-  );
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
+  )
 }
 
 export default App;
