@@ -1,21 +1,11 @@
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { ColorModeProvider } from "./context";
-import { BrowserRouter } from "react-router-dom";
-import { NavBar } from "./components";
-import AppRoutes from "./routes";
-import theme from "./theme";
+import { Box, Heading, Text } from "@chakra-ui/react";
 
 function App() {
   return (
-    <ColorModeProvider>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <BrowserRouter>
-          <NavBar />
-          <AppRoutes />
-        </BrowserRouter>
-      </ThemeProvider>
-    </ColorModeProvider>
+    <Box p={5}>
+      <Heading>Pham Thanh Nhan</Heading>
+      <Text mt={3}>Xin chao, toi la sinh vien nganh cong nghe thong tin</Text>
+    </Box>
   );
 }
 
