@@ -5,6 +5,7 @@ import { Box, Typography } from '@mui/material';
 import { styles } from '@styles/sections/HeroSection.js';
 import { HERO_TITLE, HERO_DESCRIPTION, BUTTON_LABEL } from '@constants/HeroSection.js';
 import ActionButton from '@components/buttons/ActionButton.jsx';
+import { Title, Description } from '@components/typography';
 
 export const HeroSection = ({ darkMode }) => {
     const theme = useTheme();
@@ -14,14 +15,22 @@ export const HeroSection = ({ darkMode }) => {
     const style = useMemo(() => styles(theme, darkMode, isMobile), [theme, darkMode, isMobile]);
 
     return (
-        <Box sx={style.container}>
-            <Typography variant="h3" component="h1" gutterBottom sx={style.title}>
-                {HERO_TITLE}
-            </Typography>
-            <Typography variant="h6" component="p" sx={style.description}>
-                {HERO_DESCRIPTION}
-            </Typography>
-            <ActionButton label={BUTTON_LABEL} link='/generator' darkMode={darkMode} />
+        <Box
+            sx={style.container}
+        >
+            <Title
+                label={HERO_TITLE}
+                darkMode={darkMode}
+            />
+            <Description
+                label={HERO_DESCRIPTION}
+                darkMode={darkMode}
+            />
+            <ActionButton
+                label={BUTTON_LABEL}
+                link='/generator'
+                darkMode={darkMode}
+            />
         </Box>
     );
 };
