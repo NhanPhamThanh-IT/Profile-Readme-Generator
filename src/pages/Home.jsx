@@ -1,45 +1,17 @@
-import { useNavigate } from 'react-router-dom';
 import {
     Box,
-    Button,
     Container,
-    Grid,
     Paper,
     Typography,
 } from '@mui/material';
-import { ArrowRight, Github, Code, Eye, Copy, Save } from 'lucide-react';
-import FeatureCard from '../components/FeatureCard';
+import { Github } from 'lucide-react';
 
-import { HeroSection } from '../sections/Home';
+import { HeroSection, FeaturesSection, LastSection } from '@sections/Home';
 
 export const Home = ({ darkMode }) => {
-    const navigate = useNavigate();
-
-    const features = [
-        {
-            icon: <Code size={24} />,
-            title: 'Easy Form Input',
-            description: 'Quickly input your profile information using our intuitive form interface.',
-        },
-        {
-            icon: <Eye size={24} />,
-            title: 'Live Preview',
-            description: 'See your README changes in real-time with our live markdown preview.',
-        },
-        {
-            icon: <Copy size={24} />,
-            title: 'Copy to Clipboard',
-            description: 'Copy your generated README with a single click and paste it to GitHub.',
-        },
-        {
-            icon: <Save size={24} />,
-            title: 'Save Templates',
-            description: 'Save your profile as a template to reuse or modify later.',
-        },
-    ];
 
     return (
-        <Container maxWidth="lg" sx={{ mt: 4 }}>
+        <Container maxWidth="lg" sx={{ mt: 4, userSelect: 'none' }}>
             <HeroSection darkMode={darkMode} />
 
             <Box sx={{ mb: 8 }}>
@@ -111,75 +83,9 @@ export const Home = ({ darkMode }) => {
                 </Paper>
             </Box>
 
-            <Typography
-                variant="h4"
-                component="h2"
-                align="center"
-                gutterBottom
-                sx={{
-                    fontWeight: 700,
-                    mb: 4,
-                }}
-            >
-                Features
-            </Typography>
+            <FeaturesSection darkMode={darkMode} />
 
-            <Grid container spacing={4} sx={{ mb: 8 }}>
-                {features.map((feature, index) => (
-                    <Grid item xs={12} sm={6} key={index}>
-                        <FeatureCard
-                            icon={feature.icon}
-                            title={feature.title}
-                            description={feature.description}
-                            darkMode={darkMode}
-                            delay={index * 0.1}
-                        />
-                    </Grid>
-                ))}
-            </Grid>
-
-            <Box
-                sx={{
-                    textAlign: 'center',
-                    py: 6,
-                }}
-            >
-                <Typography
-                    variant="h4"
-                    component="h2"
-                    gutterBottom
-                    sx={{
-                        fontWeight: 700,
-                        mb: 2,
-                    }}
-                >
-                    Ready to create your profile?
-                </Typography>
-                <Typography
-                    variant="body1"
-                    sx={{
-                        color: 'text.secondary',
-                        mb: 4,
-                        maxWidth: '600px',
-                        mx: 'auto',
-                    }}
-                >
-                    Create a professional GitHub profile README in minutes and stand out to recruiters,
-                    collaborators, and the open-source community.
-                </Typography>
-                <Button
-                    variant="contained"
-                    size="large"
-                    endIcon={<ArrowRight />}
-                    onClick={() => navigate('/generator')}
-                    sx={{
-                        px: 4,
-                        py: 1.5,
-                    }}
-                >
-                    Start Building
-                </Button>
-            </Box>
+            <LastSection darkMode={darkMode} />
         </Container>
     );
 }

@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import { Box, useMediaQuery, useTheme } from '@mui/material';
 import { Loading, Layout } from '../components';
 
-// Lazy load các trang
 const Home = lazy(() => import('../pages/Home'));
 const Generator = lazy(() => import('../pages/Generator'));
 const NotFound = lazy(() => import('../pages/NotFound'));
