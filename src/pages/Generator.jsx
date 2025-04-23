@@ -13,44 +13,16 @@ import {
     Button,
     Divider,
 } from '@mui/material';
-import { ArrowLeft, ArrowRight, Copy, Download, Eye, FileText } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Eye, FileText } from 'lucide-react';
 import { Title } from '@components/Typography';
 import BasicInfoForm from '@components/forms/BasicInfoForm';
 import SkillsForm from '@components/forms/SkillsForm';
 import ProjectsForm from '@components/forms/ProjectsForm';
 import SocialsForm from '@components/forms/SocialsForm';
 import StatsForm from '@components/forms/StatsForm';
-import Preview from '@components/Preview';
+import MarkdownPreview from '@components/MarkdownPreview';
 import { generateMarkdown as buildMarkdown } from '@utils/generateMarkdown';
-
-export const defaultProfileData = {
-    basic: {
-        name: '',
-        githubUsername: '',
-        title: '',
-        about: '',
-        location: '',
-        website: ''
-    },
-    skills: [],
-    projects: [],
-    socials: {
-        github: '',
-        linkedin: '',
-        twitter: '',
-        instagram: '',
-        youtube: '',
-        dev: '',
-        medium: '',
-        codepen: ''
-    },
-    stats: {
-        showGitHubStats: true,
-        showTopLanguages: true,
-        showStreak: false,
-        theme: 'radical'
-    }
-};
+import { defaultProfileData } from '@constants/Generator/defaultProfileData';
 
 function Generator({ darkMode }) {
     const theme = useTheme();
@@ -210,56 +182,12 @@ function Generator({ darkMode }) {
 
                 {previewVisible && (
                     <Grid item xs={12} md={6}>
-                        <Paper
-                            elevation={darkMode ? 2 : 1}
-                            sx={{
-                                p: 3,
-                                height: '100%',
-                                minHeight: '600px',
-                                display: 'flex',
-                                flexDirection: 'column',
-                            }}
-                        >
-                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                                <Typography variant="h6" component="h2" sx={{ fontWeight: 600 }}>
-                                    README Preview
-                                </Typography>
-                                <Box>
-                                    <Button
-                                        variant={copied ? 'contained' : 'outlined'}
-                                        color={copied ? 'success' : 'primary'}
-                                        onClick={copyToClipboard}
-                                        startIcon={<Copy />}
-                                        size="small"
-                                        sx={{ mr: 1 }}
-                                    >
-                                        {copied ? 'Copied!' : 'Copy Markdown'}
-                                    </Button>
-                                    <Button
-                                        variant="outlined"
-                                        color="primary"
-                                        startIcon={<Download />}
-                                        size="small"
-                                        href={`data:text/markdown;charset=utf-8,${encodeURIComponent(markdown)}`}
-                                        download="README.md"
-                                    >
-                                        Download
-                                    </Button>
-                                </Box>
-                            </Box>
-
-                            <Divider sx={{ mb: 3 }} />
-
-                            <Box
-                                sx={{
-                                    flexGrow: 1,
-                                    overflow: 'auto',
-                                    bgcolor: darkMode ? '#0d1117' : '#f6f8fa',
-                                }}
-                            >
-                                <Preview markdown={markdown} darkMode={darkMode} />
-                            </Box>
-                        </Paper>
+                        <MarkdownPreview
+                            markdown={markdown}
+                            darkMode={darkMode}
+                            copied={copied}
+                            copyToClipboard={copyToClipboard}
+                        />
                     </Grid>
                 )}
             </Grid>
