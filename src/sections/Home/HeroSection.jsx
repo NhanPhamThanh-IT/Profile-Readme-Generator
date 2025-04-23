@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { styles } from '@styles/sections/HeroSection.js';
-import { HERO_TITLE, HERO_DESCRIPTION, BUTTON_LABEL } from '@constants/HeroSection.js';
+import { HERO_TITLE, HERO_DESCRIPTION, BUTTON_LABEL, BUTTON_LINK } from '@constants/HeroSection.js';
 import ActionButton from '@components/buttons/ActionButton.jsx';
 import { Title, Description } from '@components/typography';
 
@@ -28,7 +28,7 @@ export const HeroSection = ({ darkMode }) => {
             />
             <ActionButton
                 label={BUTTON_LABEL}
-                link='/generator'
+                link={BUTTON_LINK}
                 darkMode={darkMode}
             />
         </Box>

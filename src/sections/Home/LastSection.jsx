@@ -1,42 +1,25 @@
-import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { ActionButton } from '@components/buttons';
+import { Title, Description } from '@components/typography';
+import { TITLE, DESCRIPTION, BUTTON_LABEL, BUTTON_LINK } from '@constants/LastSection.js';
+import { styles } from '@styles/sections/LastSection.js';
 
-export const LastSection = (darkMode) => {
+export const LastSection = ({ darkMode }) => {
     return (
         <Box
-            sx={{
-                textAlign: 'center',
-                py: 6,
-            }}
+            sx={styles.container}
         >
-            <Typography
-                variant="h4"
-                component="h2"
-                gutterBottom
-                sx={{
-                    fontWeight: 700,
-                    mb: 2,
-                }}
-            >
-                Ready to create your profile?
-            </Typography>
-            <Typography
-                variant="body1"
-                sx={{
-                    color: 'text.secondary',
-                    mb: 4,
-                    maxWidth: '600px',
-                    mx: 'auto',
-                }}
-            >
-                Create a professional GitHub profile README in minutes and stand out to recruiters,
-                collaborators, and the open-source community.
-            </Typography>
-
+            <Title
+                label={TITLE}
+                darkMode={darkMode}
+            />
+            <Description
+                label={DESCRIPTION}
+                darkMode={darkMode}
+            />
             <ActionButton
-                label="Start Building"
-                link="/generator"
+                label={BUTTON_LABEL}
+                link={BUTTON_LINK}
                 darkMode={darkMode}
             />
         </Box>
