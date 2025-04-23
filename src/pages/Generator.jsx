@@ -14,6 +14,7 @@ import {
     Divider,
 } from '@mui/material';
 import { ArrowLeft, ArrowRight, Copy, Download, Eye, FileText } from 'lucide-react';
+import { Title } from '@components/Typography';
 import BasicInfoForm from '../components/forms/BasicInfoForm';
 import SkillsForm from '../components/forms/SkillsForm';
 import ProjectsForm from '../components/forms/ProjectsForm';
@@ -194,15 +195,10 @@ function Generator({ darkMode }) {
     };
 
     return (
-        <Container maxWidth="xl" sx={{ mt: 4 }}>
-            <Typography
-                variant="h4"
-                component="h1"
-                gutterBottom
-                sx={{ fontWeight: 700, mb: 4, textAlign: 'center' }}
-            >
-                Create Your GitHub Profile README
-            </Typography>
+        <Container maxWidth="xl" sx={{ mt: 6, mb: 12 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 4 }}>
+                <Title label="Create Your GitHub Profile README" darkMode={darkMode} newVariant="h5" />
+            </Box>
 
             <Grid container spacing={4}>
                 <Grid item xs={12} md={previewVisible ? 6 : 12}>
@@ -318,8 +314,6 @@ function Generator({ darkMode }) {
                                     flexGrow: 1,
                                     overflow: 'auto',
                                     bgcolor: darkMode ? '#0d1117' : '#f6f8fa',
-                                    p: 2,
-                                    borderRadius: 1,
                                 }}
                             >
                                 <Preview markdown={markdown} darkMode={darkMode} />

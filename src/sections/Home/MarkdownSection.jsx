@@ -1,6 +1,6 @@
 import { Box, Paper } from '@mui/material';
 import { IMG_SRC, IMG_ALT } from '@constants/Home/MarkdownSection.js';
-import { styles } from '@styles/sections/markdownSection.js';
+import { styles } from '@styles/sections/MarkdownSection.js';
 
 export const MarkdownSection = ({ darkMode }) => {
     const style = styles(darkMode);
