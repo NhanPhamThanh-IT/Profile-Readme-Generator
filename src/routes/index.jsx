@@ -1,53 +1,58 @@
-import React, { useState, Suspense, lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { Box, useMediaQuery, useTheme } from '@mui/material';
-import { Loading, Layout } from '../components';
+import React, { useState, Suspense } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import Loading from '@components/Loading';
+import Page from '@components/Page';
 
-const Home = lazy(() => import('../pages/Home'));
-const Generator = lazy(() => import('../pages/Generator'));
-const NotFound = lazy(() => import('../pages/NotFound'));
+const Home = React.lazy(() => import('@pages/Home'));
+const Generator = React.lazy(() => import('@pages/Generator'));
+const Layout = React.lazy(() => import('@components/Layout'));
+const NotFound = React.lazy(() => import('@pages/NotFound'));
 
-function App() {
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+const AppRoutes = () => {
     const [darkMode, setDarkMode] = useState(false);
+    const location = useLocation();
 
     const toggleDarkMode = () => {
-        setDarkMode(!darkMode);
+        setDarkMode(prev => !prev);
     };
 
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                minHeight: '100vh',
-                bgcolor: darkMode ? '#121212' : '#f5f7fa',
-                color: darkMode ? '#f5f7fa' : '#121212',
-            }}
-        >
-            <Box
-                component="main"
-                sx={{
-                    flexGrow: 1,
-                    p: isMobile ? 2 : 4,
-                }}
-            >
-                <Suspense fallback={<Loading />}>
-                    <Routes>
-                        <Route
-                            path="/"
-                            element={<Layout darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
-                        >
-                            <Route index element={<Home darkMode={darkMode} />} />
-                            <Route path="generator" element={<Generator darkMode={darkMode} />} />
-                            <Route path="*" element={<NotFound darkMode={darkMode} />} />
-                        </Route>
-                    </Routes>
-                </Suspense>
-            </Box>
-        </Box>
+        <Suspense fallback={<Loading />}>
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <Layout darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+                    }
+                >
+                    <Route
+                        index
+                        element={
+                            <Page key={location.pathname} title="Home">
+                                <Home darkMode={darkMode} />
+                            </Page>
+                        }
+                    />
+                    <Route
+                        path="generator"
+                        element={
+                            <Page key={location.pathname} title="Generator">
+                                <Generator darkMode={darkMode} />
+                            </Page>
+                        }
+                    />
+                    <Route
+                        path="*"
+                        element={
+                            <Page key={location.pathname} title="404 - Not Found">
+                                <NotFound darkMode={darkMode} />
+                            </Page>
+                        }
+                    />
+                </Route>
+            </Routes>
+        </Suspense>
     );
-}
+};
 
-export default App;
+export default AppRoutes;
