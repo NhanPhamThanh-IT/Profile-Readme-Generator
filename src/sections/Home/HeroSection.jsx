@@ -3,7 +3,7 @@ import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
 import { styles } from '@styles/sections/HeroSection.js';
-import { HERO_TITLE, HERO_DESCRIPTION, BUTTON_LABEL, BUTTON_LINK } from '@constants/HeroSection.js';
+import { HERO_TITLE, HERO_DESCRIPTION, BUTTON_LABEL, BUTTON_LINK } from '@constants/Home/HeroSection.js';
 import ActionButton from '@components/buttons/ActionButton.jsx';
 import { Title, Description } from '@components/typography';
 

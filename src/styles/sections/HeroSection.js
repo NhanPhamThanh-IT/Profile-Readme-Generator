@@ -1,7 +1,11 @@
-export const styles = (isMobile) => ({
+export const styles = ({ isMobile }) => ({
     container: {
+        minHeight: isMobile ? 'auto' : '80vh',
         textAlign: 'center',
-        marginBottom: 6,
-        marginTop: isMobile ? 4 : 8,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        mb: isMobile ? 'auto' : 10,
     },
 });

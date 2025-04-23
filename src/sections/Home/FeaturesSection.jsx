@@ -1,5 +1,5 @@
 import { Box, Container, Grid } from '@mui/material';
-import { TITLE, DESCRIPTION, features } from '@constants/FeaturesSection';
+import { TITLE, DESCRIPTION, features } from '@constants/Home/FeaturesSection';
 import { Title, Description } from '@components/typography';
 import FeatureCard from '@components/cards/FeatureCard';
 import { styles } from '@styles/sections/FeaturesSection';

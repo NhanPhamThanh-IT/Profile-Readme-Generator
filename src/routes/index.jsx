@@ -3,9 +3,9 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Loading from '@components/Loading';
 import Page from '@components/Page';
 
+const Layout = React.lazy(() => import('@components/layouts'));
 const Home = React.lazy(() => import('@pages/Home'));
 const Generator = React.lazy(() => import('@pages/Generator'));
-const Layout = React.lazy(() => import('@components/Layout'));
 const NotFound = React.lazy(() => import('@pages/NotFound'));
 
 const AppRoutes = () => {
