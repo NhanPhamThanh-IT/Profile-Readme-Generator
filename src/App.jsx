@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Box, useMediaQuery, useTheme } from '@mui/material';
-import Header from './components/Layout/Header';
-import Home from './pages/Home';
-import Generator from './pages/Generator';
-import Footer from './components/Layout/Footer';
+import Header from '@components/Layout/Header';
+import Footer from '@components/Layout/Footer';
+import Home from '@pages/Home';
+import Generator from '@pages/Generator';
 
 function App() {
   const theme = useTheme();

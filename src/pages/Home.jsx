@@ -6,15 +6,13 @@ import {
     Grid,
     Paper,
     Typography,
-    useMediaQuery,
-    useTheme,
 } from '@mui/material';
 import { ArrowRight, Github, Code, Eye, Copy, Save } from 'lucide-react';
 import FeatureCard from '../components/FeatureCard';
 
+import { HeroSection } from '../sections/Home';
+
 export const Home = ({ darkMode }) => {
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const navigate = useNavigate();
 
     const features = [
@@ -42,59 +40,7 @@ export const Home = ({ darkMode }) => {
 
     return (
         <Container maxWidth="lg" sx={{ mt: 4 }}>
-            <Box
-                className="slide-in"
-                sx={{
-                    textAlign: 'center',
-                    mb: 6,
-                    mt: isMobile ? 4 : 8
-                }}
-            >
-                <Typography
-                    variant="h3"
-                    component="h1"
-                    gutterBottom
-                    sx={{
-                        fontWeight: 700,
-                        mb: 2,
-                        fontSize: { xs: '2rem', md: '3rem' },
-                    }}
-                >
-                    Create an Amazing GitHub Profile
-                </Typography>
-                <Typography
-                    variant="h6"
-                    component="p"
-                    sx={{
-                        color: 'text.secondary',
-                        mb: 4,
-                        maxWidth: '800px',
-                        mx: 'auto',
-                    }}
-                >
-                    Showcase your skills, projects, and achievements with a professionally designed GitHub Profile README.
-                    Generate yours in minutes with our easy-to-use tool.
-                </Typography>
-                <Button
-                    variant="contained"
-                    size="large"
-                    endIcon={<ArrowRight />}
-                    onClick={() => navigate('/generator')}
-                    sx={{
-                        px: 4,
-                        py: 1.5,
-                        borderRadius: '8px',
-                        boxShadow: '0 4px 14px 0 rgba(59, 130, 246, 0.4)',
-                        transition: 'all 0.2s',
-                        '&:hover': {
-                            transform: 'translateY(-2px)',
-                            boxShadow: '0 6px 20px 0 rgba(59, 130, 246, 0.6)',
-                        },
-                    }}
-                >
-                    Get Started
-                </Button>
-            </Box>
+            <HeroSection darkMode={darkMode} />
 
             <Box sx={{ mb: 8 }}>
                 <Paper
