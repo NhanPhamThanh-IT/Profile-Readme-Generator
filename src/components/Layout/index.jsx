@@ -1,9 +1,9 @@
-import React from 'react';
+import { Box, useMediaQuery, useTheme } from '@mui/material';
 import Header from './Header';
 import Footer from './Footer';
-import { Box, useMediaQuery, useTheme } from '@mui/material';
+import { Outlet } from 'react-router-dom';
 
-export const Layout = ({ children, darkMode, toggleDarkMode }) => {
+const Layout = ({ darkMode, toggleDarkMode }) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -25,7 +25,7 @@ export const Layout = ({ children, darkMode, toggleDarkMode }) => {
                     p: isMobile ? 2 : 4,
                 }}
             >
-                {children}
+                <Outlet />
             </Box>
             <Footer darkMode={darkMode} />
         </Box>

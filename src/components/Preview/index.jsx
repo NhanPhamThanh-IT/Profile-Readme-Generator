@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Box, Typography, useTheme } from '@mui/material';
 import { marked } from 'marked';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 function Preview({ markdown, darkMode }) {
     const theme = useTheme();
@@ -14,7 +12,8 @@ function Preview({ markdown, darkMode }) {
 
         // Custom code block rendering with syntax highlighting
         renderer.code = (code, language) => {
-            return `<pre class="language-${language}"><code class="language-${language}">${code}</code></pre>`;
+            const languageClass = language || 'text';
+            return `<pre class="language-${languageClass}"><code class="language-${languageClass}">${code}</code></pre>`;
         };
 
         marked.setOptions({
@@ -53,19 +52,23 @@ function Preview({ markdown, darkMode }) {
         );
     }
 
-    // Process the HTML to apply syntax highlighting
+    // Process the HTML to apply syntax highlighting (for <pre><code> blocks)
     const processedHtml = html.replace(
         /<pre class="language-(\w+)"><code class="language-(\w+)">([\s\S]*?)<\/code><\/pre>/g,
         (match, lang1, lang2, code) => {
             try {
                 const language = lang1 || 'text';
-                const highlightedCode = SyntaxHighlighter({
-                    children: code,
-                    style: darkMode ? tomorrow : prism,
-                    language,
-                    PreTag: 'div',
-                });
-                return highlightedCode;
+                return `
+                    <div class="code-block">
+                        <SyntaxHighlighter
+                            style={${darkMode ? 'tomorrow' : 'prism'}}
+                            language="${language}"
+                            PreTag="div"
+                        >
+                            ${code}
+                        </SyntaxHighlighter>
+                    </div>
+                `;
             } catch (error) {
                 console.error('Error highlighting code:', error);
                 return match; // Return original if highlighting fails
