@@ -57,9 +57,7 @@ const styles = (darkMode, copied) => ({
     markdownBox: {
         flexGrow: 1,
         overflow: 'auto',
-        bgcolor: darkMode ? '#0f2b2e' : '#e0f7f4',
         color: darkMode ? '#a7ffeb' : '#004d40',
-        borderRadius: 1,
     },
 });
 

@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { Copy, Download } from 'lucide-react';
 import MarkdownContent from './MarkdownContent';
-import styles from '@styles/components/others/MarkdownPreview';
+import styles from '@styles/components/others/MarkdownPreview.js';
 
 function MarkdownPreview({ markdown, darkMode, copied, copyToClipboard }) {
     const sx = styles(darkMode, copied);
