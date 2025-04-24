@@ -17,8 +17,8 @@ const Generator = ({ darkMode }) => {
 
     const {
         profileData,
-        markdown,
         handleUpdateProfile,
+        markdown,
         setMarkdown
     } = useGeneratorLogic();
 

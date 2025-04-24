@@ -9,7 +9,7 @@ import {
 import { Copy, Download } from 'lucide-react';
 import MarkdownContent from '@components/markdowns/MarkdownContent';
 import { useCopyMarkdownLogic } from '@hooks';
-import styles from '@styles/components/others/MarkdownPreview.js';
+import styles from '@styles/sections/MarkdownPreview.js';
 
 export function MarkdownPreview({ darkMode, markdown }) {
     const {
@@ -27,7 +27,6 @@ export function MarkdownPreview({ darkMode, markdown }) {
                 <Box>
                     <Button
                         variant={copied ? 'contained' : 'outlined'}
-                        color={sx.copyButton.color}
                         onClick={copyToClipboard}
                         startIcon={<Copy />}
                         size="small"

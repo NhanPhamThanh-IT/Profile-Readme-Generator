@@ -22,31 +22,39 @@ const styles = (darkMode, copied) => ({
         color: darkMode ? '#1de9b6' : '#00695c',
     },
     copyButton: {
-        color: copied ? 'success' : undefined,
         sx: {
             mr: 1,
-            borderColor: darkMode ? '#2f4f4f' : '#00897b',
             border: '2px solid',
+            backgroundColor: copied
+                ? (darkMode ? '#1de9b6' : '#00897b')
+                : (darkMode ? 'transparent' : 'transparent'),
+            borderColor: copied
+                ? (darkMode ? '#1de9b6' : '#00897b')
+                : (darkMode ? '#1de9b6' : '#00897b'),
             color: copied
-                ? undefined
+                ? (darkMode ? '#000' : '#fff')
                 : (darkMode ? '#1de9b6' : '#00897b'),
             '&:hover': {
-                backgroundColor: darkMode ? '#1de9b622' : '#00897b22',
-                borderColor: darkMode ? '#2f4f4f' : '#00897b',
                 border: '2px solid',
+                backgroundColor: copied
+                    ? (darkMode ? '#00bfa5' : '#00796b')
+                    : (darkMode ? '#1de9b622' : '#00897b22'),
+                borderColor: copied
+                    ? (darkMode ? '#00bfa5' : '#00796b')
+                    : (darkMode ? '#1de9b6' : '#00897b'),
             },
         },
     },
     downloadButton: {
-        color: darkMode ? 'secondary' : 'primary',
         sx: {
-            borderColor: darkMode ? '#2f4f4f' : '#00897b',
-            color: darkMode ? '#1de9b6' : '#00897b',
             border: '2px solid',
+            backgroundColor: 'transparent',
+            borderColor: darkMode ? '#1de9b6' : '#00897b',
+            color: darkMode ? '#1de9b6' : '#00897b',
             '&:hover': {
-                backgroundColor: darkMode ? '#1de9b622' : '#00897b22',
-                borderColor: darkMode ? '#2f4f4f' : '#00897b',
                 border: '2px solid',
+                backgroundColor: darkMode ? '#1de9b622' : '#00897b22',
+                borderColor: darkMode ? '#1de9b6' : '#00796b',
             },
         },
     },
