@@ -55,11 +55,17 @@ export const FormStepper = ({
                             variant="contained"
                             endIcon={<FileText />}
                             onClick={() => setMarkdown(buildMarkdown(profileData))}
+                            sx={styles.activeStepButton(darkMode)}
                         >
                             Generate README
                         </Button>
                     ) : (
-                        <Button variant="contained" endIcon={<ArrowRight />} onClick={handleNext}>
+                        <Button
+                            variant="contained"
+                            endIcon={<ArrowRight />}
+                            onClick={handleNext}
+                            sx={styles.activeStepButton(darkMode)}
+                        >
                             Next
                         </Button>
                     )}

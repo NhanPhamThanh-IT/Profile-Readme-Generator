@@ -29,7 +29,18 @@ const styles = {
 
     previewButton: {
         mr: 2
-    }
+    },
+
+    activeStepButton: (darkMode) => ({
+        bgcolor: darkMode ? "#1de9b6" : "#00695c",
+        color: darkMode ? "black" : "white",
+        transition: "background-color 0.3s ease, box-shadow 0.3s ease",
+        ":hover": {
+            bgcolor: darkMode ? "#1de9b6" : "#00796b",
+            boxShadow: "0 0 0 4px rgba(0, 150, 136, 0.2)",
+        }
+    }),
+
 };
 
 export default styles;
