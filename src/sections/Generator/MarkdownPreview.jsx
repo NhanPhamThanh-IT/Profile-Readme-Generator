@@ -7,10 +7,15 @@ import {
     Button,
 } from '@mui/material';
 import { Copy, Download } from 'lucide-react';
-import MarkdownContent from './MarkdownContent';
+import MarkdownContent from '@components/markdowns/MarkdownContent';
+import { useCopyMarkdownLogic } from '@hooks';
 import styles from '@styles/components/others/MarkdownPreview.js';
 
-function MarkdownPreview({ markdown, darkMode, copied, copyToClipboard }) {
+export function MarkdownPreview({ darkMode, markdown }) {
+    const {
+        copied,
+        copyToClipboard
+    } = useCopyMarkdownLogic({ markdown: markdown });
     const sx = styles(darkMode, copied);
 
     return (

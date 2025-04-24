@@ -1,23 +1,33 @@
-import { Box, Button, Divider, Paper, Step, StepLabel, Stepper } from '@mui/material';
+import React from 'react';
+import { Paper, Stepper, Step, StepLabel, Box, Button, Divider } from '@mui/material';
 import { ArrowLeft, ArrowRight, Eye, FileText } from 'lucide-react';
 import StepContent from '@components/forms';
+import { generateMarkdown as buildMarkdown } from '@utils';
+import { useStepHandlerLogic } from '@hooks';
 
-export const StepperForm = ({
+const steps = ['Basic Info', 'Skills', 'Projects', 'Social Links', 'Stats & Badges'];
+
+export const FormStepper = ({
     darkMode,
-    activeStep,
-    steps,
     profileData,
-    handleBack,
-    handleNext,
     handleUpdateProfile,
     isMobile,
     previewVisible,
     setPreviewVisible,
-    setMarkdown,
-    buildMarkdown,
+    setMarkdown
 }) => {
+
+    const {
+        activeStep,
+        handleNext,
+        handleBack
+    } = useStepHandlerLogic();
+
     return (
-        <Paper elevation={darkMode ? 2 : 1} sx={{ p: 3, minHeight: '600px', display: 'flex', flexDirection: 'column' }}>
+        <Paper
+            elevation={darkMode ? 2 : 1}
+            sx={{ p: 3, minHeight: '600px', display: 'flex', flexDirection: 'column' }}
+        >
             <Stepper activeStep={activeStep} alternativeLabel sx={{ mb: 4 }}>
                 {steps.map((label) => (
                     <Step key={label}>
@@ -66,4 +76,4 @@ export const StepperForm = ({
     );
 };
 
-export default StepperForm;
+export default FormStepper;
