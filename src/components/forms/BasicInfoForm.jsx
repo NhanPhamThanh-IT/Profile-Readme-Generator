@@ -1,61 +1,9 @@
-import {
-    Box,
-    TextField,
-    Typography,
-    Grid,
-    InputAdornment,
-} from '@mui/material';
-import { User, Github, Briefcase, MapPin, Globe } from 'lucide-react';
+import React from 'react';
+import { Box, TextField, Typography, Grid, InputAdornment } from '@mui/material';
+import { basicInfoFormFields } from '@constants/Generator';
+import getStyles from '@styles/components/forms/BasicInfoForm.js';
 
-const fields = [
-    {
-        label: 'Name',
-        name: 'name',
-        placeholder: 'John Doe',
-        icon: <User size={20} />,
-        size: { xs: 12, sm: 6 },
-        required: true,
-    },
-    {
-        label: 'GitHub Username',
-        name: 'githubUsername',
-        placeholder: 'johndoe',
-        icon: <Github size={20} />,
-        size: { xs: 12, sm: 6 },
-        required: true,
-    },
-    {
-        label: 'Professional Title',
-        name: 'title',
-        placeholder: 'Full Stack Developer | React Expert | Open Source Contributor',
-        icon: <Briefcase size={20} />,
-        size: { xs: 12 },
-    },
-    {
-        label: 'About Me',
-        name: 'about',
-        placeholder: "I'm a passionate developer who loves to create innovative solutions...",
-        multiline: true,
-        rows: 4,
-        size: { xs: 12 },
-    },
-    {
-        label: 'Location',
-        name: 'location',
-        placeholder: 'San Francisco, CA',
-        icon: <MapPin size={20} />,
-        size: { xs: 12, sm: 6 },
-    },
-    {
-        label: 'Personal Website',
-        name: 'website',
-        placeholder: 'https://johndoe.dev',
-        icon: <Globe size={20} />,
-        size: { xs: 12, sm: 6 },
-    },
-];
-
-function BasicInfoForm({ data, onUpdate }) {
+function BasicInfoForm({ data, onUpdate, darkMode }) {
     const handleChange = (e) => {
         const { name, value } = e.target;
         onUpdate({
@@ -63,6 +11,8 @@ function BasicInfoForm({ data, onUpdate }) {
             [name]: value,
         });
     };
+
+    const styles = getStyles(darkMode);
 
     const renderTextField = (field) => {
         const {
@@ -89,9 +39,18 @@ function BasicInfoForm({ data, onUpdate }) {
                     required={required}
                     multiline={multiline}
                     rows={rows}
+                    variant="outlined"
+                    sx={styles.input}
                     InputProps={{
                         startAdornment: icon && (
-                            <InputAdornment position="start">{icon}</InputAdornment>
+                            <InputAdornment
+                                position="start"
+                                sx={multiline ? { alignSelf: 'flex-start', mt: 1.5 } : {}}
+                            >
+                                {React.cloneElement(icon, {
+                                    style: styles.icon
+                                })}
+                            </InputAdornment>
                         ),
                     }}
                 />
@@ -104,12 +63,12 @@ function BasicInfoForm({ data, onUpdate }) {
             <Typography variant="h6" component="h2" gutterBottom>
                 Basic Information
             </Typography>
-            <Typography variant="body2" paragraph>
+            <Typography variant="body2" paragraph sx={styles.container}>
                 Let's start with some basic information about you to personalize your GitHub profile README.
             </Typography>
 
             <Grid container spacing={3}>
-                {fields.map(renderTextField)}
+                {Array.isArray(basicInfoFormFields) && basicInfoFormFields.map(renderTextField)}
             </Grid>
         </Box>
     );

@@ -4,10 +4,10 @@ import ProjectsForm from '@components/forms/ProjectsForm';
 import SocialsForm from '@components/forms/SocialsForm';
 import StatsForm from '@components/forms/StatsForm';
 
-const StepContent = ({ step, profileData, handleUpdateProfile }) => {
+const StepContent = ({ darkMode, step, profileData, handleUpdateProfile }) => {
     switch (step) {
         case 0:
-            return <BasicInfoForm data={profileData.basic} onUpdate={(data) => handleUpdateProfile('basic', data)} />;
+            return <BasicInfoForm darkMode={darkMode} data={profileData.basic} onUpdate={(data) => handleUpdateProfile('basic', data)} />;
         case 1:
             return <SkillsForm data={profileData.skills} onUpdate={(data) => handleUpdateProfile('skills', data)} />;
         case 2:

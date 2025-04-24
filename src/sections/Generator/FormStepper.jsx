@@ -30,7 +30,7 @@ export const FormStepper = ({
             </Stepper>
 
             <Box sx={styles.contentBox}>
-                <StepContent step={activeStep} profileData={profileData} handleUpdateProfile={handleUpdateProfile} />
+                <StepContent darkMode={darkMode} step={activeStep} profileData={profileData} handleUpdateProfile={handleUpdateProfile} />
             </Box>
 
             <Divider sx={styles.divider} />
