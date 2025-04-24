@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paper, Stepper, Step, StepLabel, Box, Button, Divider } from '@mui/material';
-import { ArrowLeft, ArrowRight, Eye, FileText } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Eye, CircleCheck } from 'lucide-react';
 import StepContent from '@components/forms';
 import { generateMarkdown as buildMarkdown } from '@utils';
 import { useStepHandlerLogic } from '@hooks';
@@ -21,7 +21,7 @@ export const FormStepper = ({
 
     return (
         <Paper elevation={styles.paper(darkMode).elevation} sx={styles.paper(darkMode)}>
-            <Stepper activeStep={activeStep} alternativeLabel sx={styles.stepper}>
+            <Stepper activeStep={activeStep} alternativeLabel sx={styles.stepper(darkMode)}>
                 {steps.map((label) => (
                     <Step key={label}>
                         <StepLabel>{label}</StepLabel>
@@ -36,7 +36,13 @@ export const FormStepper = ({
             <Divider sx={styles.divider} />
 
             <Box sx={styles.footerBox}>
-                <Button disabled={activeStep === 0} onClick={handleBack} startIcon={<ArrowLeft />}>
+                <Button
+                    variant="contained"
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                    startIcon={<ArrowLeft />}
+                    sx={styles.activeStepButton(darkMode)}
+                >
                     Back
                 </Button>
                 <Box>
@@ -53,11 +59,11 @@ export const FormStepper = ({
                     {activeStep === steps.length - 1 ? (
                         <Button
                             variant="contained"
-                            endIcon={<FileText />}
+                            endIcon={<CircleCheck />}
                             onClick={() => setMarkdown(buildMarkdown(profileData))}
                             sx={styles.activeStepButton(darkMode)}
                         >
-                            Generate README
+                            Done
                         </Button>
                     ) : (
                         <Button
