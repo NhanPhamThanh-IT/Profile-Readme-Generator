@@ -2,35 +2,43 @@ export const generateMarkdown = (profileData) => {
     let md = '';
 
     if (profileData.basic.name) {
-        md += `# 👋 Hi there! I'm ${profileData.basic.name}\n\n`;
+        md += `# 👋 Hi there! I'm **${profileData.basic.name}**\n\n`;
     }
 
     if (profileData.basic.title) {
-        md += `${profileData.basic.title}\n\n`;
+        md += `**${profileData.basic.title}**\n\n`;
     }
 
     if (profileData.basic.about) {
-        md += `## 🚀 About Me\n${profileData.basic.about}\n\n`;
+        md += `## 🚀 **About Me**\n\n> _"${profileData.basic.about}"_\n\n`;
+    }
+
+    if (profileData.basic.location) {
+        md += `- 🗺️ I come from **${profileData.basic.location}**\n\n`;
+    }
+
+    if (profileData.basic.website) {
+        md += `- 🌐 Explore my work and projects at **[My Portfolio](${profileData.basic.website})**\n\n`;
     }
 
     if (profileData.skills.length > 0) {
-        md += `## 🔧 Skills & Technologies\n`;
-        md += profileData.skills.join(' | ');
+        md += `## 🔧 **Skills & Technologies**\n`;
+        md += profileData.skills.map(skill => `- ${skill}`).join('\n');
         md += '\n\n';
     }
 
     if (profileData.projects.length > 0) {
-        md += `## 🏗️ Projects\n\n`;
+        md += `## 🏗️ **Projects**\n\n`;
         profileData.projects.forEach(project => {
-            md += `### ${project.name}\n`;
-            if (project.description) md += `${project.description}\n`;
-            if (project.link) md += `[View Project](${project.link})\n`;
+            md += `### 🚀 ${project.name}\n`;
+            if (project.description) md += `> *${project.description}*\n`;
+            if (project.link) md += `[🔗 View Project](${project.link})\n`;
             md += '\n';
         });
     }
 
     if (Object.values(profileData.socials).some(value => value)) {
-        md += `## 🔗 Connect With Me\n\n`;
+        md += `## 🔗 **Connect With Me**\n\n`;
 
         if (profileData.socials.github) {
             md += `[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](${profileData.socials.github}) `;
@@ -48,7 +56,7 @@ export const generateMarkdown = (profileData) => {
     }
 
     if (profileData.stats.showGitHubStats && profileData.basic.githubUsername) {
-        md += `## 📊 GitHub Stats\n\n`;
+        md += `## 📊 **GitHub Stats**\n\n`;
         md += `![GitHub stats](https://github-readme-stats.vercel.app/api?username=${profileData.basic.githubUsername}&show_icons=true&theme=${profileData.stats.theme})\n\n`;
 
         if (profileData.stats.showTopLanguages) {

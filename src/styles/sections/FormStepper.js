@@ -1,6 +1,7 @@
 const styles = {
     paper: (darkMode) => ({
         p: 3,
+        pt: 4,
         minHeight: '600px',
         display: 'flex',
         flexDirection: 'column',
