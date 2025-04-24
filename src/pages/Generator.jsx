@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useMediaQuery, useTheme, Container, Grid, Paper, Box, Button, Divider, Stepper, Step, StepLabel } from '@mui/material';
 import { ArrowLeft, ArrowRight, Eye, FileText } from 'lucide-react';
-import { Title } from '@components/Typography';
+import { Title } from '@components/typography';
 import MarkdownPreview from '@components/MarkdownPreview';
 import StepContent from '@components/forms';
 import { useGeneratorLogic } from '@hooks';
+import { generateMarkdown as buildMarkdown } from '@utils';
 
 const Generator = ({ darkMode }) => {
     const theme = useTheme();
