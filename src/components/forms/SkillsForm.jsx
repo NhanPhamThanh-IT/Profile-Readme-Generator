@@ -69,6 +69,7 @@ function SkillsForm({ data, onUpdate, darkMode }) {
                                             </InputAdornment>
                                         ),
                                     }}
+                                    sx={styles(darkMode).autocompleteInput}
                                 />
                             )}
                         />
