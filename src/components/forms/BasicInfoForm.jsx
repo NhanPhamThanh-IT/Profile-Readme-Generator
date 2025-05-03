@@ -60,7 +60,7 @@ function BasicInfoForm({ data, onUpdate, darkMode }) {
 
     return (
         <Box>
-            <Typography variant="h6" component="h2" gutterBottom>
+            <Typography variant="h6" component="h2" sx={styles.title} gutterBottom>
                 Basic Information
             </Typography>
             <Typography variant="body2" paragraph sx={styles.container}>

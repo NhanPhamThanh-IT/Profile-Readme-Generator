@@ -9,13 +9,13 @@ const StepContent = ({ darkMode, step, profileData, handleUpdateProfile }) => {
         case 0:
             return <BasicInfoForm darkMode={darkMode} data={profileData.basic} onUpdate={(data) => handleUpdateProfile('basic', data)} />;
         case 1:
-            return <SkillsForm data={profileData.skills} onUpdate={(data) => handleUpdateProfile('skills', data)} />;
+            return <SkillsForm darkMode={darkMode} data={profileData.skills} onUpdate={(data) => handleUpdateProfile('skills', data)} />;
         case 2:
-            return <ProjectsForm data={profileData.projects} onUpdate={(data) => handleUpdateProfile('projects', data)} />;
+            return <ProjectsForm darkMode={darkMode} data={profileData.projects} onUpdate={(data) => handleUpdateProfile('projects', data)} />;
         case 3:
-            return <SocialsForm data={profileData.socials} onUpdate={(data) => handleUpdateProfile('socials', data)} />;
+            return <SocialsForm darkMode={darkMode} data={profileData.socials} onUpdate={(data) => handleUpdateProfile('socials', data)} />;
         case 4:
-            return <StatsForm data={profileData.stats} onUpdate={(data) => handleUpdateProfile('stats', data)} githubUsername={profileData.basic.githubUsername} />;
+            return <StatsForm darkMode={darkMode} data={profileData.stats} onUpdate={(data) => handleUpdateProfile('stats', data)} githubUsername={profileData.basic.githubUsername} />;
         default:
             return 'Unknown step';
     }

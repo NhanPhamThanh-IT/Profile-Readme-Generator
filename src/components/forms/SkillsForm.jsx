@@ -8,24 +8,15 @@ import {
     Button,
     Autocomplete,
     Paper,
+    InputAdornment,
 } from '@mui/material';
-import { Plus, X } from 'lucide-react';
+import { Plus, X, Search } from 'lucide-react';
+import { commonSkills } from '@constants/Generator';
+import { sectionData } from '@constants/Generator/skillsFormSectionContent.js';
+import { styles } from '@styles/components/forms/index.js';
 
-function SkillsForm({ data, onUpdate }) {
+function SkillsForm({ data, onUpdate, darkMode }) {
     const [newSkill, setNewSkill] = useState('');
-
-    // Common programming languages, frameworks, and tools
-    const commonSkills = [
-        'JavaScript', 'TypeScript', 'React', 'Vue.js', 'Angular', 'Node.js',
-        'Express', 'Next.js', 'HTML', 'CSS', 'Sass', 'Tailwind CSS',
-        'Python', 'Django', 'Flask', 'Java', 'Spring Boot', 'C#', '.NET',
-        'PHP', 'Laravel', 'Ruby', 'Ruby on Rails', 'Go', 'Rust', 'Swift',
-        'Kotlin', 'SQL', 'PostgreSQL', 'MySQL', 'MongoDB', 'Firebase',
-        'AWS', 'Azure', 'Google Cloud', 'Docker', 'Kubernetes', 'Git',
-        'CI/CD', 'RESTful APIs', 'GraphQL', 'WebSockets', 'Redis',
-        'Redux', 'MobX', 'Webpack', 'Babel', 'ESLint', 'Jest', 'Mocha',
-        'Cypress', 'Selenium', 'Figma', 'Adobe XD', 'Photoshop', 'Illustrator'
-    ];
 
     const handleAddSkill = () => {
         if (newSkill.trim() && !data.includes(newSkill.trim())) {
@@ -47,74 +38,83 @@ function SkillsForm({ data, onUpdate }) {
 
     return (
         <Box>
-            <Typography variant="h6" component="h2" gutterBottom>
-                Skills & Technologies
+            <Typography variant="h6" component="h2" gutterBottom sx={styles(darkMode).title}>
+                {sectionData.title}
             </Typography>
-            <Typography variant="body2" color="text.secondary" paragraph>
-                Add the technologies, programming languages, and tools you're proficient with.
-                These will be displayed as a section in your README.
+            <Typography variant="body2" paragraph sx={styles(darkMode).typographyColor}>
+                {sectionData.description}
             </Typography>
 
-            <Grid container spacing={2} alignItems="center">
-                <Grid item xs>
-                    <Autocomplete
-                        freeSolo
-                        options={commonSkills.filter(skill => !data.includes(skill))}
-                        inputValue={newSkill}
-                        onInputChange={(event, newValue) => {
-                            setNewSkill(newValue);
-                        }}
-                        renderInput={(params) => (
-                            <TextField
-                                {...params}
-                                label="Add a skill"
-                                fullWidth
-                                onKeyPress={handleKeyPress}
-                                placeholder="JavaScript, React, Node.js, etc."
-                            />
-                        )}
-                    />
+            <Grid container spacing={2} alignItems="stretch">
+                <Grid item xs={12} md>
+                    <Box height="100%">
+                        <Autocomplete
+                            fullWidth
+                            freeSolo
+                            options={commonSkills.filter(skill => !data.includes(skill))}
+                            inputValue={newSkill}
+                            onInputChange={(event, newValue) => setNewSkill(newValue)}
+                            renderInput={(params) => (
+                                <TextField
+                                    {...params}
+                                    label="Add a skill"
+                                    variant="outlined"
+                                    onKeyPress={handleKeyPress}
+                                    placeholder="e.g. JavaScript, React, Node.js..."
+                                    InputProps={{
+                                        ...params.InputProps,
+                                        startAdornment: (
+                                            <InputAdornment position="start">
+                                                <Search size={18} />
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                />
+                            )}
+                        />
+                    </Box>
                 </Grid>
-                <Grid item>
+
+                <Grid item xs={12} md="auto" sx={{ display: 'flex' }}>
                     <Button
                         variant="contained"
+                        color="primary"
                         onClick={handleAddSkill}
                         disabled={!newSkill.trim()}
                         startIcon={<Plus size={18} />}
+                        sx={styles(darkMode).addSkillButton}
                     >
-                        Add
+                        Add Skill
                     </Button>
                 </Grid>
             </Grid>
 
             <Box sx={{ mt: 4 }}>
-                <Typography variant="subtitle1" gutterBottom>
-                    Your Skills {data.length > 0 && `(${data.length})`}
+                <Typography variant="subtitle1" gutterBottom sx={styles(darkMode).contentTitle}>
+                    Your Skills {`(${data.length})`}
                 </Typography>
                 {data.length === 0 ? (
-                    <Typography variant="body2" color="text.secondary">
-                        No skills added yet. Add some skills to display in your README.
-                    </Typography>
+                    <Paper
+                        variant="outlined"
+                        sx={styles(darkMode).paperContent}
+                    >
+                        <Typography variant="body2" sx={styles(darkMode).contentDescription}>
+                            {sectionData.emptySkillsDescription}
+                        </Typography>
+                    </Paper>
                 ) : (
                     <Paper
                         variant="outlined"
-                        sx={{
-                            p: 2,
-                            mt: 1,
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            gap: 1
-                        }}
+                        sx={styles(darkMode).paper}
                     >
                         {data.map((skill) => (
                             <Chip
                                 key={skill}
                                 label={skill}
                                 onDelete={() => handleDeleteSkill(skill)}
-                                deleteIcon={<X size={16} />}
-                                color="primary"
+                                deleteIcon={<X size={16} strokeWidth={5} sx={styles(darkMode).icon} color={'#F08080'} />}
                                 variant="outlined"
-                                sx={{ m: 0.5 }}
+                                sx={styles(darkMode).chip}
                             />
                         ))}
                     </Paper>
@@ -122,18 +122,12 @@ function SkillsForm({ data, onUpdate }) {
             </Box>
 
             <Box sx={{ mt: 4 }}>
-                <Typography variant="subtitle1" gutterBottom>
+                <Typography variant="subtitle1" gutterBottom sx={styles(darkMode).contentTitle}>
                     Suggested Skills
                 </Typography>
                 <Paper
                     variant="outlined"
-                    sx={{
-                        p: 2,
-                        mt: 1,
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        gap: 1
-                    }}
+                    sx={styles(darkMode).paper}
                 >
                     {commonSkills
                         .filter(skill => !data.includes(skill))
@@ -144,9 +138,8 @@ function SkillsForm({ data, onUpdate }) {
                                 label={skill}
                                 onClick={() => onUpdate([...data, skill])}
                                 clickable
-                                color="default"
                                 variant="outlined"
-                                sx={{ m: 0.5 }}
+                                sx={styles(darkMode).chip}
                             />
                         ))}
                 </Paper>

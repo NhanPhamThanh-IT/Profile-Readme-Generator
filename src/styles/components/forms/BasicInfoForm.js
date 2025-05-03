@@ -1,6 +1,7 @@
 const colors = {
     light: {
         inputBackground: 'white',
+        titleColor: '#004d40',
         textColor: '#004d40',
         borderColor: '#004d40',
         iconColor: '#004d40',
@@ -9,6 +10,7 @@ const colors = {
     },
     dark: {
         inputBackground: '#122c2e',
+        titleColor: '#1de9b6',
         textColor: '#e0f2f1',
         borderColor: '#1de9b6',
         iconColor: '#1de9b6',
@@ -21,6 +23,12 @@ export const styles = (darkMode) => {
     const currentColors = darkMode ? colors.dark : colors.light;
 
     return {
+        title: {
+            color: currentColors.titleColor,
+            fontWeight: 'bold',
+            fontSize: '1.5rem',
+            marginBottom: '1rem',
+        },
         container: {
             color: currentColors.textColor,
             opacity: 0.85,
