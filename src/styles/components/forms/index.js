@@ -45,11 +45,11 @@ export const styles = (darkMode) => {
         },
         paper: {
             ...commonStyles,
-            border: '2px solid',
             p: 2,
             mt: 1,
             display: 'flex',
             flexWrap: 'wrap',
+            borderStyle: 'dashed',
             gap: 1,
             backgroundColor: darkMode ? 'transparent' : '#fff',
         },
@@ -67,7 +67,6 @@ export const styles = (darkMode) => {
         },
         chip: {
             m: 0.5,
-            border: '2px solid',
             color: currentColors.borderColor,
             borderColor: currentColors.borderColor,
         },

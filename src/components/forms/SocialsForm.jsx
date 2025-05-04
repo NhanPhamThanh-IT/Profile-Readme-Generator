@@ -12,6 +12,9 @@ import {
 import {
     socialPlatforms
 } from '@constants/Generator/socialPlatforms';
+import {
+    styles
+} from '@styles/components/forms/SocialLinksForm.js';
 
 function SocialsForm({ data, onUpdate, darkMode }) {
     const handleChange = (e) => {
@@ -33,7 +36,10 @@ function SocialsForm({ data, onUpdate, darkMode }) {
                 darkMode={darkMode}
             />
 
-            <Paper variant="outlined" sx={{ p: 3 }}>
+            <Paper
+                variant="outlined"
+                sx={styles(darkMode).paper}
+            >
                 <Grid container spacing={3}>
                     {socialPlatforms.map((platform) => (
                         <Grid item xs={12} sm={6} key={platform.name}>
@@ -46,11 +52,16 @@ function SocialsForm({ data, onUpdate, darkMode }) {
                                 placeholder={platform.placeholder}
                                 InputProps={{
                                     startAdornment: (
-                                        <InputAdornment position="start">
+                                        <InputAdornment
+                                            position="start"
+                                            style={{ color: darkMode ? '#1de9b6' : '#004d40' }}
+                                        >
                                             {platform.icon}
                                         </InputAdornment>
                                     ),
                                 }}
+                                sx={styles(darkMode).autocompleteInput}
+                                focused
                             />
                         </Grid>
                     ))}
