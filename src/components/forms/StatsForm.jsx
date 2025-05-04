@@ -1,6 +1,5 @@
 import {
     Box,
-    Typography,
     FormControlLabel,
     Switch,
     Grid,
@@ -14,6 +13,12 @@ import {
 import {
     StepperTitle,
     StepperSubtitle
+} from '@components/typography';
+import {
+    styles
+} from '@styles/components/forms/StatsForm';
+import {
+    SwitchDescription
 } from '@components/typography';
 
 function StatsForm({ data, onUpdate, githubUsername, darkMode }) {
@@ -49,12 +54,16 @@ function StatsForm({ data, onUpdate, githubUsername, darkMode }) {
             />
 
             {!githubUsername && (
-                <Alert severity="info" sx={{ mb: 3 }}>
+                <Alert
+                    severity="error"
+                    sx={styles(darkMode).alert}
+                >
                     Please enter your GitHub username in the Basic Info section to enable GitHub statistics.
                 </Alert>
+
             )}
 
-            <Paper variant="outlined" sx={{ p: 3 }}>
+            <Paper variant="outlined" sx={styles(darkMode).paper}>
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <FormControlLabel
@@ -64,14 +73,18 @@ function StatsForm({ data, onUpdate, githubUsername, darkMode }) {
                                     onChange={handleSwitchChange}
                                     name="showGitHubStats"
                                     disabled={!githubUsername}
+                                    sx={styles(darkMode).switch}
                                 />
                             }
                             label="Show GitHub Stats"
+                            sx={styles(darkMode).formControl}
                         />
-                        <Typography variant="body2" color="text.secondary" sx={{ ml: 4 }}>
-                            Display your GitHub statistics (stars, commits, PRs, issues, contributions)
-                        </Typography>
+                        <SwitchDescription
+                            desc="Display your GitHub statistics (stars, commits, PRs, issues, contributions)"
+                            darkMode={darkMode}
+                        />
                     </Grid>
+
 
                     <Grid item xs={12}>
                         <FormControlLabel
@@ -81,13 +94,16 @@ function StatsForm({ data, onUpdate, githubUsername, darkMode }) {
                                     onChange={handleSwitchChange}
                                     name="showTopLanguages"
                                     disabled={!githubUsername || !data.showGitHubStats}
+                                    sx={styles(darkMode).switch}
                                 />
                             }
                             label="Show Top Languages"
+                            sx={styles(darkMode).formControl}
                         />
-                        <Typography variant="body2" color="text.secondary" sx={{ ml: 4 }}>
-                            Display your most used programming languages based on your repositories
-                        </Typography>
+                        <SwitchDescription
+                            desc="Display your most used programming languages based on your repositories"
+                            darkMode={darkMode}
+                        />
                     </Grid>
 
                     <Grid item xs={12}>
@@ -98,13 +114,16 @@ function StatsForm({ data, onUpdate, githubUsername, darkMode }) {
                                     onChange={handleSwitchChange}
                                     name="showStreak"
                                     disabled={!githubUsername}
+                                    sx={styles(darkMode).switch}
                                 />
                             }
                             label="Show GitHub Streak"
+                            sx={styles(darkMode).formControl}
                         />
-                        <Typography variant="body2" color="text.secondary" sx={{ ml: 4 }}>
-                            Display your current GitHub streak, total contributions, and contribution streak
-                        </Typography>
+                        <SwitchDescription
+                            desc="Display your current GitHub streak, total contributions, and contribution streak"
+                            darkMode={darkMode}
+                        />
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
@@ -127,51 +146,6 @@ function StatsForm({ data, onUpdate, githubUsername, darkMode }) {
                     </Grid>
                 </Grid>
             </Paper>
-
-            <Box sx={{ mt: 4 }}>
-                <Typography variant="subtitle1" gutterBottom>
-                    Preview
-                </Typography>
-                <Paper variant="outlined" sx={{ p: 3, overflow: 'auto' }}>
-                    {githubUsername ? (
-                        <Box>
-                            {data.showGitHubStats && (
-                                <Box sx={{ mb: 2 }}>
-                                    <img
-                                        src={`https://github-readme-stats.vercel.app/api?username=${githubUsername}&show_icons=true&theme=${data.theme}`}
-                                        alt="GitHub Stats"
-                                        style={{ maxWidth: '100%', height: 'auto' }}
-                                    />
-                                </Box>
-                            )}
-
-                            {data.showTopLanguages && data.showGitHubStats && (
-                                <Box sx={{ mb: 2 }}>
-                                    <img
-                                        src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${githubUsername}&layout=compact&theme=${data.theme}`}
-                                        alt="Top Languages"
-                                        style={{ maxWidth: '100%', height: 'auto' }}
-                                    />
-                                </Box>
-                            )}
-
-                            {data.showStreak && (
-                                <Box>
-                                    <img
-                                        src={`https://github-readme-streak-stats.herokuapp.com/?user=${githubUsername}&theme=${data.theme}`}
-                                        alt="GitHub Streak"
-                                        style={{ maxWidth: '100%', height: 'auto' }}
-                                    />
-                                </Box>
-                            )}
-                        </Box>
-                    ) : (
-                        <Typography variant="body2" color="text.secondary" align="center">
-                            Enter your GitHub username to preview stats.
-                        </Typography>
-                    )}
-                </Paper>
-            </Box>
         </Box>
     );
 }

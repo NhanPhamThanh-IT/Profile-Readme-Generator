@@ -11,8 +11,10 @@
  * @exports Description - A styled paragraph for descriptions or intro text.
  * @exports StepperTitle - A heading used in step-based UI flows.
  * @exports StepperSubtitle - A subtitle used in multi-step interfaces for context or instructions.
+ * @exports SwitchDescription - A description component with a switch for toggling options.
  */
 
 export * from './Title';
 export * from './Description';
 export * from './StepperTypography';
+export * from './SwitchDescription'
