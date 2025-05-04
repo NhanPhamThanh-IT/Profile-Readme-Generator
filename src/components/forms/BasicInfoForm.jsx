@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, TextField, Typography, Grid, InputAdornment } from '@mui/material';
 import { basicInfoFormFields } from '@constants/Generator';
 import getStyles from '@styles/components/forms/BasicInfoForm.js';
+import { StepperTitle } from '@components/typography';
 
 function BasicInfoForm({ data, onUpdate, darkMode }) {
     const handleChange = (e) => {
@@ -60,9 +61,10 @@ function BasicInfoForm({ data, onUpdate, darkMode }) {
 
     return (
         <Box>
-            <Typography variant="h6" component="h2" sx={styles.title} gutterBottom>
-                Basic Information
-            </Typography>
+            <StepperTitle
+                label="Basic Information"
+                darkMode={darkMode}
+            />
             <Typography variant="body2" paragraph sx={styles.container}>
                 Let's start with some basic information about you to personalize your GitHub profile README.
             </Typography>

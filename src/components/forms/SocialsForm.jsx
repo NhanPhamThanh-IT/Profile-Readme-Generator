@@ -16,8 +16,11 @@ import {
     FileText,
     Codepen
 } from 'lucide-react';
+import {
+    StepperTitle
+} from '@components/typography';
 
-function SocialsForm({ data, onUpdate }) {
+function SocialsForm({ data, onUpdate, darkMode }) {
     const handleChange = (e) => {
         const { name, value } = e.target;
         onUpdate({
@@ -79,9 +82,10 @@ function SocialsForm({ data, onUpdate }) {
 
     return (
         <Box>
-            <Typography variant="h6" component="h2" gutterBottom>
-                Social Links
-            </Typography>
+            <StepperTitle
+                label="Social Links"
+                darkMode={darkMode}
+            />
             <Typography variant="body2" color="text.secondary" paragraph>
                 Add your social media profiles to help people connect with you. These will be displayed as badges in your README.
             </Typography>

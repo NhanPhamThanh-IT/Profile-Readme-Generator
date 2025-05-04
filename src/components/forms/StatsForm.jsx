@@ -11,8 +11,11 @@ import {
     Paper,
     Alert,
 } from '@mui/material';
+import {
+    StepperTitle
+} from '@components/typography';
 
-function StatsForm({ data, onUpdate, githubUsername }) {
+function StatsForm({ data, onUpdate, githubUsername, darkMode }) {
     const handleSwitchChange = (e) => {
         const { name, checked } = e.target;
         onUpdate({
@@ -35,9 +38,10 @@ function StatsForm({ data, onUpdate, githubUsername }) {
 
     return (
         <Box>
-            <Typography variant="h6" component="h2" gutterBottom>
-                GitHub Stats & Badges
-            </Typography>
+            <StepperTitle
+                label="GitHub Stats & Badges"
+                darkMode={darkMode}
+            />
             <Typography variant="body2" color="text.secondary" paragraph>
                 Include dynamic GitHub statistics and badges to make your README more engaging.
             </Typography>

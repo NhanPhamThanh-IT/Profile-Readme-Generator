@@ -16,15 +16,10 @@ import {
     InputAdornment,
 } from '@mui/material';
 import { Plus, Edit2, Trash2, Github, ExternalLink, Code } from 'lucide-react';
+import { emptyProject } from '@constants/Generator/emptyProject';
+import { StepperTitle } from '@components/typography';
 
-function ProjectsForm({ data, onUpdate }) {
-    const emptyProject = {
-        name: '',
-        description: '',
-        link: '',
-        technologies: [],
-    };
-
+function ProjectsForm({ data, onUpdate, darkMode }) {
     const [open, setOpen] = useState(false);
     const [currentProject, setCurrentProject] = useState(emptyProject);
     const [editIndex, setEditIndex] = useState(null);
@@ -100,9 +95,7 @@ function ProjectsForm({ data, onUpdate }) {
 
     return (
         <Box>
-            <Typography variant="h6" component="h2" gutterBottom>
-                Projects
-            </Typography>
+            <StepperTitle label="Projects" darkMode={darkMode} />
             <Typography variant="body2" color="text.secondary" paragraph>
                 Add your best projects to showcase your skills and experience. You can add links to GitHub repositories or live demos.
             </Typography>

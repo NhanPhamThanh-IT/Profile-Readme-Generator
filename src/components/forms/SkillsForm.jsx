@@ -14,6 +14,7 @@ import { Plus, X, Search } from 'lucide-react';
 import { commonSkills } from '@constants/Generator';
 import { sectionData } from '@constants/Generator/skillsFormSectionContent.js';
 import { styles } from '@styles/components/forms/index.js';
+import { StepperTitle } from '@components/typography';
 
 function SkillsForm({ data, onUpdate, darkMode }) {
     const [newSkill, setNewSkill] = useState('');
@@ -38,9 +39,7 @@ function SkillsForm({ data, onUpdate, darkMode }) {
 
     return (
         <Box>
-            <Typography variant="h6" component="h2" gutterBottom sx={styles(darkMode).title}>
-                {sectionData.title}
-            </Typography>
+            <StepperTitle label={sectionData.title} darkMode={darkMode} />
             <Typography variant="body2" paragraph sx={styles(darkMode).typographyColor}>
                 {sectionData.description}
             </Typography>
