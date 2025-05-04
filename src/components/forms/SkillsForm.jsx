@@ -10,11 +10,27 @@ import {
     Paper,
     InputAdornment,
 } from '@mui/material';
-import { Plus, X, Search } from 'lucide-react';
-import { commonSkills } from '@constants/Generator';
-import { sectionData } from '@constants/Generator/skillsFormSectionContent.js';
-import { styles } from '@styles/components/forms/index.js';
-import { StepperTitle } from '@components/typography';
+import {
+    Plus,
+    X,
+    Search
+} from 'lucide-react';
+import {
+    commonSkills
+} from '@constants/Generator';
+import {
+    sectionData
+} from '@constants/Generator/skillsFormSectionContent.js';
+import {
+    styles
+} from '@styles/components/forms/index.js';
+import {
+    StepperTitle,
+    StepperSubtitle
+} from '@components/typography';
+import {
+    EmptyPaper
+} from '@components/papers';
 
 function SkillsForm({ data, onUpdate, darkMode }) {
     const [newSkill, setNewSkill] = useState('');
@@ -39,10 +55,14 @@ function SkillsForm({ data, onUpdate, darkMode }) {
 
     return (
         <Box>
-            <StepperTitle label={sectionData.title} darkMode={darkMode} />
-            <Typography variant="body2" paragraph sx={styles(darkMode).typographyColor}>
-                {sectionData.description}
-            </Typography>
+            <StepperTitle
+                label={sectionData.title}
+                darkMode={darkMode}
+            />
+            <StepperSubtitle
+                label={sectionData.description}
+                darkMode={darkMode}
+            />
 
             <Grid container spacing={2} alignItems="stretch">
                 <Grid item xs={12} md>
@@ -63,12 +83,16 @@ function SkillsForm({ data, onUpdate, darkMode }) {
                                     InputProps={{
                                         ...params.InputProps,
                                         startAdornment: (
-                                            <InputAdornment position="start">
+                                            <InputAdornment
+                                                position="start"
+                                                style={{ color: darkMode ? '#1de9b6' : '#004d40' }}
+                                            >
                                                 <Search size={18} />
                                             </InputAdornment>
                                         ),
                                     }}
                                     sx={styles(darkMode).autocompleteInput}
+                                    focused
                                 />
                             )}
                         />
@@ -94,14 +118,10 @@ function SkillsForm({ data, onUpdate, darkMode }) {
                     Your Skills {`(${data.length})`}
                 </Typography>
                 {data.length === 0 ? (
-                    <Paper
-                        variant="outlined"
-                        sx={styles(darkMode).paperContent}
-                    >
-                        <Typography variant="body2" sx={styles(darkMode).contentDescription}>
-                            {sectionData.emptySkillsDescription}
-                        </Typography>
-                    </Paper>
+                    <EmptyPaper
+                        message={sectionData.emptySkillsDescription}
+                        darkMode={darkMode}
+                    />
                 ) : (
                     <Paper
                         variant="outlined"

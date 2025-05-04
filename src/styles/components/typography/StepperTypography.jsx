@@ -1,9 +1,11 @@
 const colors = {
     light: {
         titleColor: '#004d40',
+        subtitleColor: '#004d40',
     },
     dark: {
         titleColor: '#1de9b6',
+        subtitleColor: '#a7ffeb',
     }
 };
 
@@ -15,7 +17,10 @@ export const styles = (darkMode) => {
             color: currentColors.titleColor,
             fontWeight: 'bold',
             fontSize: '1.5rem',
-            marginBottom: '1rem',
+        },
+        subtitle: {
+            color: currentColors.subtitleColor,
+            opacity: 0.85,
         },
     };
 };

@@ -1,8 +1,11 @@
 import React from 'react';
-import { Box, TextField, Typography, Grid, InputAdornment } from '@mui/material';
+import { Box, TextField, Grid, InputAdornment } from '@mui/material';
 import { basicInfoFormFields } from '@constants/Generator';
 import getStyles from '@styles/components/forms/BasicInfoForm.js';
-import { StepperTitle } from '@components/typography';
+import {
+    StepperTitle,
+    StepperSubtitle
+} from '@components/typography';
 
 function BasicInfoForm({ data, onUpdate, darkMode }) {
     const handleChange = (e) => {
@@ -65,10 +68,10 @@ function BasicInfoForm({ data, onUpdate, darkMode }) {
                 label="Basic Information"
                 darkMode={darkMode}
             />
-            <Typography variant="body2" paragraph sx={styles.container}>
-                Let's start with some basic information about you to personalize your GitHub profile README.
-            </Typography>
-
+            <StepperSubtitle
+                label="Let's start with some basic information about you to personalize your GitHub profile README."
+                darkMode={darkMode}
+            />
             <Grid container spacing={3}>
                 {Array.isArray(basicInfoFormFields) && basicInfoFormFields.map(renderTextField)}
             </Grid>

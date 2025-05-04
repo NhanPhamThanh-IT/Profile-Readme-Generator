@@ -17,7 +17,19 @@ import {
 } from '@mui/material';
 import { Plus, Edit2, Trash2, Github, ExternalLink, Code } from 'lucide-react';
 import { emptyProject } from '@constants/Generator/emptyProject';
-import { StepperTitle } from '@components/typography';
+import {
+    StepperTitle,
+    StepperSubtitle,
+} from '@components/typography';
+import {
+    ActionButton
+} from '@components/buttons';
+import {
+    EmptyPaper
+} from '@components/papers';
+import {
+    sectionData
+} from '@constants/Generator/projectFormSectionData';
 
 function ProjectsForm({ data, onUpdate, darkMode }) {
     const [open, setOpen] = useState(false);
@@ -95,34 +107,29 @@ function ProjectsForm({ data, onUpdate, darkMode }) {
 
     return (
         <Box>
-            <StepperTitle label="Projects" darkMode={darkMode} />
-            <Typography variant="body2" color="text.secondary" paragraph>
-                Add your best projects to showcase your skills and experience. You can add links to GitHub repositories or live demos.
-            </Typography>
+            <StepperTitle
+                label={sectionData.title}
+                darkMode={darkMode}
+            />
+            <StepperSubtitle
+                label={sectionData.subtitle}
+                darkMode={darkMode}
+            />
 
             <Box sx={{ mb: 3 }}>
-                <Button
-                    variant="contained"
-                    startIcon={<Plus size={18} />}
+                <ActionButton
+                    label="Add Project"
+                    icon={<Plus size={18} />}
                     onClick={handleOpen}
-                >
-                    Add Project
-                </Button>
+                    darkMode={darkMode}
+                />
             </Box>
 
             {data.length === 0 ? (
-                <Paper
-                    variant="outlined"
-                    sx={{
-                        p: 4,
-                        textAlign: 'center',
-                        borderStyle: 'dashed',
-                    }}
-                >
-                    <Typography variant="body1" color="text.secondary">
-                        No projects added yet. Add some projects to display in your README.
-                    </Typography>
-                </Paper>
+                <EmptyPaper
+                    message={sectionData.emptyProjectMessage}
+                    darkMode={darkMode}
+                />
             ) : (
                 <Grid container spacing={2}>
                     {data.map((project, index) => (

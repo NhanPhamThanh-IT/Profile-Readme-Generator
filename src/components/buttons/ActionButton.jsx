@@ -1,28 +1,21 @@
 import { useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { Button } from '@mui/material';
-import { ArrowRight } from 'lucide-react';
 import { styles } from '@styles/components/buttons/ActionButton';
 
-export const ActionButton = ({ label, link, darkMode }) => {
+export const ActionButton = ({ label, icon, onClick, darkMode }) => {
     const theme = useTheme();
-
-    const navigate = useNavigate();
 
     const style = useMemo(() => styles(theme, darkMode), [theme, darkMode]);
 
     return (
         <Button
             variant="contained"
-            size="large"
-            endIcon={<ArrowRight />}
-            onClick={() => navigate(link)}
+            onClick={onClick}
+            startIcon={icon}
             sx={style.button}
         >
             {label}
         </Button>
     )
-};
-
-export default ActionButton;
+}

@@ -21,10 +21,6 @@ export const styles = (darkMode) => {
     const currentColors = darkMode ? colors.dark : colors.light;
 
     return {
-        container: {
-            color: currentColors.textColor,
-            opacity: 0.85,
-        },
         input: {
             borderRadius: 1,
             '& .MuiOutlinedInput-root': {

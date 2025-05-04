@@ -1,3 +1,3 @@
 export * from './Title';
 export * from './Description';
-export * from './StepperTitle';
+export * from './StepperTypography';

@@ -1,8 +1,8 @@
-export const styles = (theme, darkMode) => ({
+export const styles = (darkMode) => ({
     title: {
         fontWeight: 700,
         marginBottom: 2,
         fontSize: { xs: '2rem', md: '3rem' },
-        color: darkMode ? theme.palette.teal.teal300 : theme.palette.teal.teal700,
+        color: darkMode ? '#1de9b6' : '#004d40',
     },
 });

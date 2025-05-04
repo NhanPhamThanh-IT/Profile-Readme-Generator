@@ -12,7 +12,8 @@ import {
     Alert,
 } from '@mui/material';
 import {
-    StepperTitle
+    StepperTitle,
+    StepperSubtitle
 } from '@components/typography';
 
 function StatsForm({ data, onUpdate, githubUsername, darkMode }) {
@@ -42,9 +43,10 @@ function StatsForm({ data, onUpdate, githubUsername, darkMode }) {
                 label="GitHub Stats & Badges"
                 darkMode={darkMode}
             />
-            <Typography variant="body2" color="text.secondary" paragraph>
-                Include dynamic GitHub statistics and badges to make your README more engaging.
-            </Typography>
+            <StepperSubtitle
+                label="Include dynamic GitHub statistics and badges to make your README more engaging."
+                darkMode={darkMode}
+            />
 
             {!githubUsername && (
                 <Alert severity="info" sx={{ mb: 3 }}>

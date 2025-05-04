@@ -26,6 +26,7 @@ export const styles = (darkMode) => {
     };
 
     return {
+        basic: darkMode ? '#004d40' : '#1de9b6',
         title: {
             color: currentColors.titleColor,
             fontWeight: 'bold',
@@ -108,6 +109,12 @@ export const styles = (darkMode) => {
             },
             '& .MuiInputBase-input::placeholder': {
                 color: commonStyles.inputColor,
+            },
+            '& label': {
+                color: darkMode ? '#1de9b6' : '#004d40',
+            },
+            '& label.Mui-focused': {
+                color: darkMode ? '#1de9b6' : '#004d40',
             },
         },
     };

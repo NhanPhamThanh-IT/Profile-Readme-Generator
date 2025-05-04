@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { ActionButton } from '@components/buttons';
+import { NavigationButton } from '@components/buttons';
 import { Title, Description } from '@components/typography';
 import { TITLE, DESCRIPTION, BUTTON_LABEL, BUTTON_LINK } from '@constants/Home/LastSection.js';
 import { styles } from '@styles/sections/LastSection.js';
@@ -17,7 +17,7 @@ export const LastSection = ({ darkMode }) => {
                 label={DESCRIPTION}
                 darkMode={darkMode}
             />
-            <ActionButton
+            <NavigationButton
                 label={BUTTON_LABEL}
                 link={BUTTON_LINK}
                 darkMode={darkMode}
