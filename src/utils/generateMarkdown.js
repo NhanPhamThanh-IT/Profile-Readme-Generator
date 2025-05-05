@@ -1,3 +1,42 @@
+/**
+ * Generates a GitHub README-style Markdown string based on user profile data.
+ *
+ * This function dynamically creates Markdown content sections such as:
+ * - Introduction (name, title, about)
+ * - Location and portfolio
+ * - Skills list
+ * - Projects with descriptions and links
+ * - Social media badges (GitHub, LinkedIn, Twitter)
+ * - GitHub stats (contribution chart and top languages)
+ *
+ * @param {Object} profileData - User profile information used to build the Markdown content.
+ * @param {Object} profileData.basic - Basic information about the user.
+ * @param {string} profileData.basic.name - User's full name.
+ * @param {string} profileData.basic.title - Professional title or headline.
+ * @param {string} profileData.basic.about - A brief personal description or quote.
+ * @param {string} profileData.basic.location - User's location.
+ * @param {string} profileData.basic.website - URL to user's personal or portfolio website.
+ * @param {string} profileData.basic.githubUsername - GitHub username used in stats widgets.
+ * 
+ * @param {string[]} profileData.skills - List of skills or technologies.
+ * 
+ * @param {Array<Object>} profileData.projects - List of projects.
+ * @param {string} profileData.projects[].name - Project name.
+ * @param {string} [profileData.projects[].description] - Optional project description.
+ * @param {string} [profileData.projects[].link] - Optional link to the project.
+ * 
+ * @param {Object} profileData.socials - Social media URLs.
+ * @param {string} [profileData.socials.github] - GitHub profile link.
+ * @param {string} [profileData.socials.linkedin] - LinkedIn profile link.
+ * @param {string} [profileData.socials.twitter] - Twitter profile link.
+ * 
+ * @param {Object} profileData.stats - GitHub stats display options.
+ * @param {boolean} profileData.stats.showGitHubStats - Whether to show GitHub contribution stats.
+ * @param {boolean} profileData.stats.showTopLanguages - Whether to show top languages chart.
+ * @param {string} profileData.stats.theme - Theme for GitHub stats cards.
+ * 
+ * @returns {string} A formatted Markdown string ready to be used in a GitHub README.
+ */
 export const generateMarkdown = (profileData) => {
     let md = '';
 
