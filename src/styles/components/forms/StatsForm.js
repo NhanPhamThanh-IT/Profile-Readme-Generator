@@ -60,28 +60,43 @@ export const styles = (darkMode) => {
                 color: darkMode ? '#1de9b6' : '#004d40',
             },
             '& .MuiOutlinedInput-root': {
-                color: darkMode ? '#E0F2F1' : '#004D40',
+                color: darkMode ? '#1de9b6' : '#004d40',
+                borderColor: darkMode ? '#1de9b6' : '#004d40',
+                '&.Mui-disabled': {
+                    backgroundColor: darkMode ? '#004d40' : '#b2dfdb',
+                    borderColor: darkMode ? '#1de9b6' : '#004d40',
+                },
                 '& fieldset': {
-                    borderColor: darkMode ? '#80CBC4' : '#00796B',
+                    borderColor: darkMode ? '#1de9b6' : '#004d40',
                 },
                 '&:hover fieldset': {
-                    borderColor: darkMode ? '#B2DFDB' : '#004D40',
+                    borderColor: darkMode ? '#1de9b6' : '#004d40',
                 },
                 '&.Mui-focused fieldset': {
-                    borderColor: darkMode ? '#E0F2F1' : '#00695C',
+                    borderColor: darkMode ? '#1de9b6' : '#004d40',
                 },
             },
             '& .MuiSelect-icon': {
                 color: darkMode ? '#B2DFDB' : '#00796B',
             },
         },
+        select: {
+            color: darkMode ? '#E0F2F1' : '#004D40',
+            bgcolor: darkMode ? '#122c2e' : 'white',
+        },
         menuItem: {
             color: darkMode ? '#E0F2F1' : '#004D40',
+            bgcolor: darkMode ? '#122c2e' : 'white',
             '&.Mui-selected': {
-                backgroundColor: darkMode ? '#00695C' : '#B2DFDB',
+                backgroundColor: darkMode ? '#004D40' : '#B2DFDB',
             },
             '&.Mui-selected:hover': {
-                backgroundColor: darkMode ? '#00796B' : '#80CBC4',
+                backgroundColor: darkMode ? '#004D40' : '#B2DFDB',
+                color: darkMode ? '#E0F2F1' : '#004D40',
+            },
+            '&:hover': {
+                backgroundColor: darkMode ? '#004D40' : '#B2DFDB',
+                color: darkMode ? '#E0F2F1' : '#004D40',
             },
         }
     }

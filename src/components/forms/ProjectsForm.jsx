@@ -1,3 +1,19 @@
+/**
+ * ProjectsForm component
+ *
+ * This component allows users to add, edit, and delete projects for their GitHub profile README.
+ * Each project includes fields like name, description, link, and technologies used.
+ * Projects are displayed in a list format and managed via a dialog form.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {Array<Object>} props.data - The current list of user projects
+ * @param {Function} props.onUpdate - Callback to update the full projects array
+ * @param {boolean} props.darkMode - Indicates whether dark mode is enabled
+ *
+ * @returns {JSX.Element} The rendered form for managing multiple projects
+ */
+
 import { useState } from 'react';
 import {
     Box,
@@ -37,28 +53,46 @@ function ProjectsForm({ data, onUpdate, darkMode }) {
     const [editIndex, setEditIndex] = useState(null);
     const [newTech, setNewTech] = useState('');
 
+    /**
+     * Opens the dialog for adding a new project
+     */
     const handleOpen = () => {
         setCurrentProject(emptyProject);
         setEditIndex(null);
         setOpen(true);
     };
 
+    /**
+     * Closes the project dialog without saving
+     */
     const handleClose = () => {
         setOpen(false);
     };
 
+    /**
+     * Opens the dialog for editing an existing project
+     * @param {number} index - Index of the project to edit
+     */
     const handleEdit = (index) => {
         setCurrentProject(data[index]);
         setEditIndex(index);
         setOpen(true);
     };
 
+    /**
+     * Deletes a project from the list
+     * @param {number} index - Index of the project to delete
+     */
     const handleDelete = (index) => {
         const newProjects = [...data];
         newProjects.splice(index, 1);
         onUpdate(newProjects);
     };
 
+    /**
+     * Updates the project form fields as the user types
+     * @param {React.ChangeEvent<HTMLInputElement>} e
+     */
     const handleProjectChange = (e) => {
         const { name, value } = e.target;
         setCurrentProject({
@@ -67,6 +101,9 @@ function ProjectsForm({ data, onUpdate, darkMode }) {
         });
     };
 
+    /**
+     * Adds a technology to the project's technology list
+     */
     const handleAddTech = () => {
         if (newTech.trim() && !currentProject.technologies.includes(newTech.trim())) {
             setCurrentProject({
@@ -77,6 +114,10 @@ function ProjectsForm({ data, onUpdate, darkMode }) {
         }
     };
 
+    /**
+     * Removes a technology chip from the list
+     * @param {string} tech - Technology name to remove
+     */
     const handleRemoveTech = (tech) => {
         setCurrentProject({
             ...currentProject,
@@ -84,6 +125,9 @@ function ProjectsForm({ data, onUpdate, darkMode }) {
         });
     };
 
+    /**
+     * Saves the current project to the list, either adding or updating it
+     */
     const handleSave = () => {
         if (!currentProject.name.trim()) return;
 
@@ -98,6 +142,10 @@ function ProjectsForm({ data, onUpdate, darkMode }) {
         setOpen(false);
     };
 
+    /**
+     * Handles Enter key press when typing a new technology
+     * @param {React.KeyboardEvent<HTMLInputElement>} e
+     */
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
@@ -134,13 +182,7 @@ function ProjectsForm({ data, onUpdate, darkMode }) {
                 <Grid container spacing={2}>
                     {data.map((project, index) => (
                         <Grid item xs={12} key={index}>
-                            <Paper
-                                variant="outlined"
-                                sx={{
-                                    p: 3,
-                                    position: 'relative',
-                                }}
-                            >
+                            <Paper variant="outlined" sx={{ p: 3, position: 'relative' }}>
                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1 }}>
                                     <Typography variant="h6" component="h3">
                                         {project.name}
@@ -166,10 +208,16 @@ function ProjectsForm({ data, onUpdate, darkMode }) {
                                         href={project.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        startIcon={project.link.includes('github.com') ? <Github size={16} /> : <ExternalLink size={16} />}
+                                        startIcon={
+                                            project.link.includes('github.com')
+                                                ? <Github size={16} />
+                                                : <ExternalLink size={16} />
+                                        }
                                         sx={{ mt: 1, mr: 1 }}
                                     >
-                                        {project.link.includes('github.com') ? 'View on GitHub' : 'View Live Demo'}
+                                        {project.link.includes('github.com')
+                                            ? 'View on GitHub'
+                                            : 'View Live Demo'}
                                     </Button>
                                 )}
 
@@ -196,11 +244,9 @@ function ProjectsForm({ data, onUpdate, darkMode }) {
                 </Grid>
             )}
 
-            {/* Project Dialog */}
+            {/* Project Dialog Form */}
             <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
-                <DialogTitle>
-                    {editIndex !== null ? 'Edit Project' : 'Add Project'}
-                </DialogTitle>
+                <DialogTitle>{editIndex !== null ? 'Edit Project' : 'Add Project'}</DialogTitle>
                 <DialogContent>
                     <Grid container spacing={2} sx={{ mt: 0.5 }}>
                         <Grid item xs={12}>
