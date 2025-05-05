@@ -3,6 +3,20 @@ import { Github, Heart } from 'lucide-react';
 import { styles } from '@styles/components/layouts';
 import { AUTHOR, BRANCH, GITHUB_URL, GITHUB_LABEL } from '@constants/layouts';
 
+/**
+ * A footer component that displays information such as branch name, author, and a link to GitHub.
+ * It also includes an icon and text indicating that the footer was "Made with Love".
+ * 
+ * @component
+ * @example
+ * const darkMode = true; // Set to false for light mode
+ * return <Footer darkMode={darkMode} />;
+ * 
+ * @param {Object} props - The properties for the component.
+ * @param {boolean} props.darkMode - Determines if dark mode styles should be applied.
+ * 
+ * @returns {React.Element} The rendered Footer component.
+ */
 export const Footer = ({ darkMode }) => {
     const theme = useTheme();
     const style = styles(theme, darkMode);
