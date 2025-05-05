@@ -1,3 +1,14 @@
+/**
+ * @file commonSkills.js
+ * @description Contains a list of common programming and design skills used in the Readme Generator application.
+ */
+
+/**
+ * An array of commonly recognized technical skills across web development, backend, cloud, testing, and design tools.
+ * This list can be used for populating dropdowns or tags for user profiles.
+ *
+ * @constant {string[]}
+ */
 export const commonSkills = [
     'JavaScript', 'TypeScript', 'React', 'Vue.js', 'Angular', 'Node.js',
     'Express', 'Next.js', 'HTML', 'CSS', 'Sass', 'Tailwind CSS',

@@ -2,8 +2,19 @@
 
 <table>
     <tr>
+        <th>
+            Light Mode
+        </th>
+        <th>
+            Dark Mode
+        </th>
+    </tr>
+    <tr>
         <td>
-            <img src="public/Background.png" alt="Background Image">
+            <img src="public/LightModeBackground.png" alt="Background Image">
+        </td>
+        <td>
+            <img src="public/DarkModeBackground.png" alt="Background Image">
         </td>
     </tr>
 </table>
