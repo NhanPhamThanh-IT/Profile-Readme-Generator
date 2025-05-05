@@ -63,7 +63,7 @@ export const styles = (darkMode) => {
                 color: darkMode ? '#1de9b6' : '#004d40',
                 borderColor: darkMode ? '#1de9b6' : '#004d40',
                 '&.Mui-disabled': {
-                    backgroundColor: darkMode ? '#004d40' : '#b2dfdb',
+                    backgroundColor: darkMode ? '#004d40' : 'white',
                     borderColor: darkMode ? '#1de9b6' : '#004d40',
                 },
                 '& fieldset': {

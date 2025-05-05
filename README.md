@@ -1,5 +1,13 @@
 # Profile Readme Generator: Craft Your Perfect GitHub Profile README
 
+<table>
+    <tr>
+        <td>
+            <img src="public/Background.png" alt="Background Image">
+        </td>
+    </tr>
+</table>
+
 ## Description
 
 Your GitHub profile README is your digital storefront, showcasing your skills, projects, and personality to the developer community. Creating an engaging and informative profile README can be challenging and time-consuming. The **Profile Readme Generator** project simplifies this process by providing a specialized command-line tool designed to automatically generate stunning and personalized GitHub profile `README.md` files. Using interactive prompts and customizable templates, it helps you incorporate dynamic elements like GitHub stats, skill badges, social media links, and more, ensuring your profile stands out. Save time, impress visitors, and effectively communicate your developer identity with a professionally generated profile README.
