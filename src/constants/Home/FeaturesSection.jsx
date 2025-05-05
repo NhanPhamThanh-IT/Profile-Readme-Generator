@@ -1,9 +1,28 @@
+/**
+ * @file FeaturesSection.js
+ * @description Contains data and configuration for the feature section of the Readme Generator application.
+ */
+
 import { Code, Eye, Copy, Save } from 'lucide-react';
 
+/**
+ * The title displayed in the feature section header.
+ * @constant {string}
+ */
 export const TITLE = 'Powerful Features';
 
+/**
+ * The description text displayed under the feature section header.
+ * @constant {string}
+ */
 export const DESCRIPTION = 'Discover all the tools designed to enhance your productivity and streamline your workflow';
 
+/**
+ * A list of feature items displayed in the UI.
+ * Each feature includes an icon component, a title, and a description.
+ *
+ * @constant {Array<{icon: React.ComponentType, title: string, description: string}>}
+ */
 export const features = [
     {
         icon: Code,

@@ -1,5 +1,25 @@
+/**
+ * @file basicInfoFields.js
+ * @description Contains the configuration for the basic information form fields used in the Readme Generator application.
+ */
+
 import { User, Github, Briefcase, MapPin, Globe, Info } from 'lucide-react';
 
+/**
+ * An array of field definitions used to render the basic information form.
+ * Each field includes metadata such as label, name, placeholder, icon, size, and validation requirements.
+ *
+ * @constant {Array<{
+ *   label: string,
+ *   name: string,
+ *   placeholder: string,
+ *   icon: JSX.Element,
+ *   size: { xs: number, sm?: number },
+ *   required?: boolean,
+ *   multiline?: boolean,
+ *   rows?: number
+ * }>}
+ */
 export const basicInfoFormFields = [
     {
         label: 'Name',
@@ -49,4 +69,7 @@ export const basicInfoFormFields = [
     },
 ];
 
+/**
+ * Default export of the form field configuration for basic user information.
+ */
 export default basicInfoFormFields;
