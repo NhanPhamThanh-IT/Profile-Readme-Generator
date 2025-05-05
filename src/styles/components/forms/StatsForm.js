@@ -55,9 +55,34 @@ export const styles = (darkMode) => {
                 fontWeight: 700,
             },
         },
-        description: {
-            ml: 6,
-            color: darkMode ? '#80cbc4' : '#00796b',
+        statsForm: {
+            '& .MuiInputLabel-root': {
+                color: darkMode ? '#1de9b6' : '#004d40',
+            },
+            '& .MuiOutlinedInput-root': {
+                color: darkMode ? '#E0F2F1' : '#004D40',
+                '& fieldset': {
+                    borderColor: darkMode ? '#80CBC4' : '#00796B',
+                },
+                '&:hover fieldset': {
+                    borderColor: darkMode ? '#B2DFDB' : '#004D40',
+                },
+                '&.Mui-focused fieldset': {
+                    borderColor: darkMode ? '#E0F2F1' : '#00695C',
+                },
+            },
+            '& .MuiSelect-icon': {
+                color: darkMode ? '#B2DFDB' : '#00796B',
+            },
         },
+        menuItem: {
+            color: darkMode ? '#E0F2F1' : '#004D40',
+            '&.Mui-selected': {
+                backgroundColor: darkMode ? '#00695C' : '#B2DFDB',
+            },
+            '&.Mui-selected:hover': {
+                backgroundColor: darkMode ? '#00796B' : '#80CBC4',
+            },
+        }
     }
 };

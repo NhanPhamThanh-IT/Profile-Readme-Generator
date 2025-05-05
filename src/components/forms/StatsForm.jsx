@@ -126,8 +126,12 @@ function StatsForm({ data, onUpdate, githubUsername, darkMode }) {
                         />
                     </Grid>
 
-                    <Grid item xs={12} sm={6}>
-                        <FormControl fullWidth disabled={!githubUsername || !data.showGitHubStats}>
+                    <Grid item xs={12}>
+                        <FormControl
+                            fullWidth
+                            disabled={!githubUsername || !data.showGitHubStats}
+                            sx={styles(darkMode).statsForm}
+                        >
                             <InputLabel id="theme-select-label">Stats Theme</InputLabel>
                             <Select
                                 labelId="theme-select-label"
@@ -137,7 +141,11 @@ function StatsForm({ data, onUpdate, githubUsername, darkMode }) {
                                 onChange={handleThemeChange}
                             >
                                 {themes.map((theme) => (
-                                    <MenuItem key={theme} value={theme}>
+                                    <MenuItem
+                                        key={theme}
+                                        value={theme}
+                                        sx={styles(darkMode).menuItem}
+                                    >
                                         {theme.charAt(0).toUpperCase() + theme.slice(1)}
                                     </MenuItem>
                                 ))}
