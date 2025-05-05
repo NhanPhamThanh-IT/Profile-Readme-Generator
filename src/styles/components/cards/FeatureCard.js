@@ -5,13 +5,13 @@ export const styles = (theme, darkMode) => {
 
     const cardBorder = darkMode
         ? theme.palette.teal.teal400
-        : alpha(theme.palette.divider, 0.1);
+        : '#004d40';
 
     const cardBg = darkMode ? 'transparent' : theme.palette.background.paper;
     const cardColor = theme.palette.text.primary;
-    const iconBg = darkMode ? alpha(tealColor, 0.3) : alpha(tealColor, 0.15);
-    const iconColor = theme.palette.teal.teal500;
-    const titleColor = darkMode ? theme.palette.teal.teal400 : theme.palette.text.primary;
+    const iconBg = darkMode ? alpha(tealColor, 0.3) : alpha('#004d40', 0.1);
+    const iconColor = darkMode ? theme.palette.teal.teal500 : '#004d40';
+    const titleColor = darkMode ? theme.palette.teal.teal400 : '#004d40';
     const descriptionColor = darkMode
         ? theme.palette.teal.teal100
         : theme.palette.text.secondary;
@@ -25,7 +25,7 @@ export const styles = (theme, darkMode) => {
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: 6,
-            border: `1px solid ${cardBorder}`,
+            border: darkMode ? `1px solid ${cardBorder}` : `2px solid ${cardBorder}`,
             backgroundColor: cardBg,
             color: cardColor,
             backdropFilter: darkMode ? 'blur(6px)' : 'none',
@@ -37,7 +37,7 @@ export const styles = (theme, darkMode) => {
                 transform: 'translateY(-6px)',
                 backgroundColor: darkMode
                     ? alpha(tealColor, 0.1)
-                    : alpha(tealColor, 0.05),
+                    : '#fff',
             },
         },
         iconBox: {
